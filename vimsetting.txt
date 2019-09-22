@@ -1,0 +1,97 @@
+
+"Plugin Install
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'kchmck/vim-coffee-script'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'epilande/vim-es2015-snippets'
+"Plugin 'epilande/vim-react-snippets'
+Plugin 'honza/vim-snippets'
+call vundle#end()
+filetype plugin indent on
+
+"Plugin Install_endline
+
+syntax on
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+let g:ycm_confirm_extra_conf = 0
+
+"To avoid conflict snippets
+
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+
+
+
+
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+
+nnoremap <leader>gg :YcmCompleter GoToImprecise<CR>
+
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+
+nnoremap <leader>t :YcmCompleter GetType<CR>
+
+nnoremap <leader>p :YcmCompleter GetParent<CR>
+
+color hackerman
+"nanotech/jellybeans.vim Plugin
+"let g:ctrlp_custom_ignore = { \ 'dir': '\.git$\|public$\|log$\|tmp$\|vendor$', \ 'file': '\v\.(exe|so|dll)$' \ }
+"How To Use : Ctrl + P (file explore)
+nnoremap  ,ff :UltiSnipsEdit
+let g:UltiSnipsExpandTrigger=""
+let g:UltiSnipsListSnippets=""
+let g:UltiSnipsJumpForwardTrigger=""
+let g:UltiSnipsJumpBackwardTrigger=""
+let g:UltiSnipsEditSplit="vertical"
+let delimitMate_expand_cr=1
+"auto close
+map <Leader>nt <ESC>:NERDTree<CR>
+"IDE_Setting
+
+set hlsearch " 검색어 하이라이팅
+set nu " 줄번호
+set autoindent " 자동 들여쓰기
+set scrolloff=2
+set wildmode=longest,list
+set ts=4 "tag select
+set sts=4 "st select
+set sw=1 " 스크롤바 너비
+set autowrite " 다른 파일로 넘어갈 때 자동 저장
+set autoread " 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
+set cindent " C언어 자동 들여쓰기
+set bs=eol,start,indent
+set history=256
+set laststatus=2 " 상태바 표시 항상
+"set paste " 붙여넣기 계단현상 없애기
+set shiftwidth=4 " 자동 들여쓰기 너비 설정
+set showmatch " 일치하는 괄호 하이라이팅
+set smartcase " 검색시 대소문자 구별
+set smarttab
+set smartindent
+set softtabstop=4
+set tabstop=4
+set ruler " 현재 커서 위치 표시
+set incsearch
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+au BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\ exe "norm g`\"" |
+\ endif
